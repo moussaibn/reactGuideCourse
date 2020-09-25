@@ -48,6 +48,23 @@ class App extends Component {
             padding: '8px',
             cursor: 'pointer'
         };
+        let persons = null;
+        if (this.state.showPersons)
+            persons = (
+                <div>
+                    <Person name={this.state.persons[0].name}
+                            age={this.state.persons[0].age}
+                    />
+                    <Person name={this.state.persons[1].name}
+                            age={this.state.persons[1].age}
+                            click={this.switchNameHandler.bind(this, "depuis un paragraphe")}
+                            change={this.nameChangeHandler}
+                    >Hobbies:
+                        Basketball </Person>
+                    <Person name={this.state.persons[2].name}
+                            age={this.state.persons[2].age}> </Person>
+                </div>
+            );
         return (
             <div className="App">
                 <h1>Hi, I'm a react App</h1>
@@ -56,21 +73,7 @@ class App extends Component {
                         onClick={this.togglePersonsHandler}>Switch person
                 </button>
 
-                {this.state.showPersons ?
-                    <div>
-                        <Person name={this.state.persons[0].name}
-                                age={this.state.persons[0].age}
-                        />
-                        <Person name={this.state.persons[1].name}
-                                age={this.state.persons[1].age}
-                                click={this.switchNameHandler.bind(this, "depuis un paragraphe")}
-                                change={this.nameChangeHandler}
-                        >Hobbies:
-                            Basketball </Person>
-                        <Person name={this.state.persons[2].name}
-                                age={this.state.persons[2].age}> </Person>
-                    </div> : null
-                }
+                {persons}
             </div>
         );
     }
