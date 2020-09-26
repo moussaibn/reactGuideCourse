@@ -14,7 +14,9 @@ class App extends Component {
     };
 
     nameChangeHandler = (event, id) => {
-        const personIndex = this.state.persons.findIndex(p => { return p.id === id});
+        const personIndex = this.state.persons.findIndex(p => {
+            return p.id === id
+        });
         const person = {...this.state.persons[personIndex]};
         person.name = event.target.value;
         const persons = [...this.state.persons];
@@ -36,14 +38,15 @@ class App extends Component {
 
     render() {
         const style = {
-            backgroundColor: 'white',
+            backgroundColor: 'green',
+            color: 'white',
             font: 'inherit',
-            border: '1px solid blue',
+            border: '1px solid',
             padding: '8px',
             cursor: 'pointer'
         };
         let persons = null;
-        if (this.state.showPersons)
+        if (this.state.showPersons) {
             persons = (
                 <div>
                     {this.state.persons.map((person, index) => {
@@ -57,6 +60,8 @@ class App extends Component {
                     })}
                 </div>
             );
+            style.backgroundColor = 'red';
+        }
         return (
             <div className="App">
                 <h1>Hi, I'm a react App</h1>
@@ -64,6 +69,7 @@ class App extends Component {
                 <button style={style}
                         onClick={this.togglePersonsHandler}>Toggle view person
                 </button>
+
 
                 {persons}
             </div>
